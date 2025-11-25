@@ -1,0 +1,6 @@
+.navbar-gradient {
+  background: linear-gradient(180deg, #4c1a1a 0%, #150202 100%);
+  color: white;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+}
