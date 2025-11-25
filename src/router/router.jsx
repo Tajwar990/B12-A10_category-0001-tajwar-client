@@ -3,6 +3,8 @@ import AllBooks from "../pages/AllBooks/AllBooks";
 import Home from "../pages/Home/Home";
 import MainLayout from "../components/layout/MainLayout";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import Login from "../Auth/Login";
+import Registration from "../Auth/Registration";
 
 export const router = createBrowserRouter([
   {
@@ -16,6 +18,14 @@ export const router = createBrowserRouter([
       {
         path: "/all-books",
         element: <AllBooks></AllBooks>,
+      },
+      {
+        path: "/auth/login",
+        element: <Login></Login>,
+      },
+      {
+        path: "/auth/register",
+        element: <Registration></Registration>,
       },
       {
         path: "/*",

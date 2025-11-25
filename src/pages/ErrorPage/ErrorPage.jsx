@@ -4,7 +4,7 @@ import errorLogo from "../../assets/error-404.png";
 
 const ErrorPage = () => {
   return (
-    <div className="card bg-[#181d23]">
+    <div className="card bg-[#181d23] w-11/12 mx-auto">
       <figure className="px-10 pt-10">
         <img src={errorLogo} alt="Shoes" className="rounded-xl" />
       </figure>
