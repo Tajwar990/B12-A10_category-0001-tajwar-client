@@ -1,8 +1,6 @@
-import React from "react";
-import NavigationBar from "../NavigationBar";
-
 import { Outlet } from "react-router";
 import Footer from "../Footer";
+import NavigationBar from "../NavigationBar";
 
 const MainLayout = () => {
   return (
