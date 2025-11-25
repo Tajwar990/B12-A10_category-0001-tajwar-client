@@ -6,6 +6,7 @@ import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Login from "../Auth/Login";
 import Registration from "../Auth/Registration";
 import AddBooks from "../pages/AddBooks/AddBooks";
+import axios from "axios";
 
 export const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ export const router = createBrowserRouter([
       {
         path: "/all-books",
         element: <AllBooks></AllBooks>,
+        loader: async () => {
+          const res = await axios.get("http://localhost:3000/books");
+          return res.data;
+        },
       },
       {
         path: "/add-books",

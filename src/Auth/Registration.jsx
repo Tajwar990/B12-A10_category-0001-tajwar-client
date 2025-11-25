@@ -15,8 +15,6 @@ const Registration = () => {
     const photoURL = event.target.photoURL.value.trim();
     const email = event.target.email.value.trim();
     const password = event.target.password.value;
-
-    // Password validation
     if (!/[A-Z]/.test(password)) {
       return toast.error(
         "Password must contain at least one uppercase letter."

@@ -25,7 +25,6 @@ const NavigationBar = () => {
 
   return (
     <div className="navbar py-0 min-h-0 z-1 shadow-sm rounded-full glass-card w-11/12 mx-auto bg-white border border-violet-300">
-      {/* Navbar Start */}
       <div className="navbar-start">
         <div className="dropdown">
           <div
@@ -93,8 +92,6 @@ const NavigationBar = () => {
           <FaBook /> The Book Haven
         </Link>
       </div>
-
-      {/* Navbar Center */}
       <div className="navbar-center hidden md:flex">
         <ul className="menu menu-horizontal px-1 gap-10">
           <li>
@@ -128,8 +125,6 @@ const NavigationBar = () => {
           </li>
         </ul>
       </div>
-
-      {/* Navbar End */}
       <div className="navbar-end gap-3">
         {user ? (
           <div className="dropdown dropdown-end z-50">
@@ -159,13 +154,37 @@ const NavigationBar = () => {
                 </li>
                 <li className="text-xs text-violet-500">{user.email}</li>
               </div>
-              <li className="mt-3">
-                <Link
-                  to={"/profile"}
+              <li>
+                <NavLink
+                  to={"/"}
                   className="text-violet-700 hover:text-violet-900"
                 >
-                  <FaUser /> Profile
-                </Link>
+                  <GoHomeFill /> Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to={"/all-books"}
+                  className="text-violet-700 hover:text-violet-900"
+                >
+                  <IoLogoModelS /> All Books
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to={"/add-book"}
+                  className="text-violet-700 hover:text-violet-900"
+                >
+                  <ImBoxAdd /> Add Book
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to={"/my-books"}
+                  className="text-violet-700 hover:text-violet-900"
+                >
+                  <FaUser /> My Books
+                </NavLink>
               </li>
               <li>
                 <Link

@@ -4,6 +4,27 @@ import { AuthContext } from "../context/AuthCOntext";
 import { FaGoogle } from "react-icons/fa";
 import toast from "react-hot-toast";
 
+// ✅ FRIENDLY FIREBASE ERROR MESSAGES
+const getFriendlyMessage = (errorCode) => {
+  switch (errorCode) {
+    case "auth/invalid-credential":
+    case "auth/wrong-password":
+      return "Incorrect password. Please try again.";
+
+    case "auth/user-not-found":
+      return "No account found with this email.";
+
+    case "auth/too-many-requests":
+      return "Too many login attempts. Please wait a moment.";
+
+    case "auth/invalid-email":
+      return "Invalid email format.";
+
+    default:
+      return "Something went wrong. Please try again.";
+  }
+};
+
 const Login = () => {
   const { signInUser, signInWithGoogle } = use(AuthContext);
   const location = useLocation();
@@ -21,13 +42,13 @@ const Login = () => {
     toast.loading("Logging in...", { id: "login" });
 
     signInUser(email, password)
-      .then((result) => {
+      .then(() => {
         toast.success("Login successful!", { id: "login" });
         event.target.reset();
         navigate(location.state || "/");
       })
       .catch((error) => {
-        toast.error(error.message, { id: "login" });
+        toast.error(getFriendlyMessage(error.code), { id: "login" });
       });
   };
 
@@ -40,14 +61,13 @@ const Login = () => {
         navigate(location?.state || "/");
       })
       .catch((error) => {
-        toast.error(error.message, { id: "login" });
+        toast.error(getFriendlyMessage(error.code), { id: "login" });
       });
   };
 
   return (
     <div className="min-h-screen bg-linear-to-br from-white via-violet-100 to-violet-200 flex items-center justify-center px-4 w-11/12 mx-auto">
       <div className="w-full max-w-md bg-white shadow-2xl rounded-3xl p-8 border border-violet-200">
-        {/* FIXED — BOOK HAVEN TITLE */}
         <h1
           className="text-4xl font-extrabold text-center mb-6 
           bg-linear-to-r from-violet-600 to-violet-400 bg-clip-text text-transparent"
@@ -78,21 +98,11 @@ const Login = () => {
             required
           />
 
-          <div className="text-right mb-3">
-            <button
-              type="button"
-              className="text-violet-600 hover:underline text-sm font-medium"
-            >
-              Forgot password?
-            </button>
-          </div>
-
           <button className="btn w-full text-white rounded-xl mb-4 bg-gradient-to-r from-violet-600 to-violet-400 hover:opacity-90">
             Login
           </button>
         </form>
 
-        {/* GOOGLE SIGN-IN */}
         <button
           onClick={handleGoogleSignIn}
           className="btn w-full rounded-xl bg-white text-violet-700 border-violet-300 mb-4 hover:bg-violet-50"
@@ -100,7 +110,6 @@ const Login = () => {
           <FaGoogle /> Login with Google
         </button>
 
-        {/* REGISTER LINK */}
         <p className="text-center text-violet-700">
           New to our website?{" "}
           <Link
