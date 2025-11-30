@@ -24,7 +24,8 @@ const NavigationBar = () => {
   };
 
   return (
-    <div className="navbar py-0 min-h-0 z-1 shadow-sm rounded-full glass-card w-11/12 mx-auto bg-white border border-violet-300">
+    <div className="navbar relative z-[9999] py-0 min-h-0 shadow-sm rounded-full glass-card w-11/12 mx-auto bg-white border border-violet-300">
+      {/* LEFT SIDE */}
       <div className="navbar-start">
         <div className="dropdown">
           <div
@@ -47,21 +48,19 @@ const NavigationBar = () => {
               />
             </svg>
           </div>
+
           <ul
             tabIndex="-1"
-            className="menu menu-sm dropdown-content bg-white rounded-box z-1 mt-3 w-52 p-2 shadow border border-violet-200"
+            className="menu menu-sm dropdown-content bg-white rounded-box z-[9999] mt-3 w-52 p-2 shadow border border-violet-200"
           >
             <li>
-              <NavLink
-                to={"/"}
-                className="text-violet-700 hover:text-violet-900"
-              >
+              <NavLink to="/" className="text-violet-700 hover:text-violet-900">
                 <GoHomeFill /> Home
               </NavLink>
             </li>
             <li>
               <NavLink
-                to={"/all-books"}
+                to="/all-books"
                 className="text-violet-700 hover:text-violet-900"
               >
                 <IoLogoModelS /> All Books
@@ -69,7 +68,7 @@ const NavigationBar = () => {
             </li>
             <li>
               <NavLink
-                to={"/add-book"}
+                to="/add-book"
                 className="text-violet-700 hover:text-violet-900"
               >
                 <ImBoxAdd /> Add Book
@@ -77,7 +76,7 @@ const NavigationBar = () => {
             </li>
             <li>
               <NavLink
-                to={"/myBooks"}
+                to="/myBooks"
                 className="text-violet-700 hover:text-violet-900"
               >
                 <FaUser /> My Books
@@ -85,23 +84,26 @@ const NavigationBar = () => {
             </li>
           </ul>
         </div>
+
         <Link
-          to={"/"}
+          to="/"
           className="flex items-center gap-1 text-xl font-bold text-violet-700"
         >
           <FaBook /> The Book Haven
         </Link>
       </div>
+
+      {/* CENTER */}
       <div className="navbar-center hidden md:flex">
         <ul className="menu menu-horizontal px-1 gap-10">
           <li>
-            <NavLink to={"/"} className="text-violet-700 hover:text-violet-900">
+            <NavLink to="/" className="text-violet-700 hover:text-violet-900">
               <GoHomeFill /> Home
             </NavLink>
           </li>
           <li>
             <NavLink
-              to={"/all-books"}
+              to="/all-books"
               className="text-violet-700 hover:text-violet-900"
             >
               <IoLogoModelS /> All Books
@@ -109,7 +111,7 @@ const NavigationBar = () => {
           </li>
           <li>
             <NavLink
-              to={"/add-book"}
+              to="/add-book"
               className="text-violet-700 hover:text-violet-900"
             >
               <ImBoxAdd /> Add Book
@@ -117,7 +119,7 @@ const NavigationBar = () => {
           </li>
           <li>
             <NavLink
-              to={"/myBooks"}
+              to="/myBooks"
               className="text-violet-700 hover:text-violet-900"
             >
               <FaUser /> My Books
@@ -125,9 +127,11 @@ const NavigationBar = () => {
           </li>
         </ul>
       </div>
+
+      {/* RIGHT SIDE */}
       <div className="navbar-end gap-3">
         {user ? (
-          <div className="dropdown dropdown-end z-50">
+          <div className="dropdown dropdown-end relative z-[99999]">
             <div
               tabIndex={0}
               role="button"
@@ -144,9 +148,10 @@ const NavigationBar = () => {
                 />
               </div>
             </div>
+
             <ul
               tabIndex="-1"
-              className="menu menu-sm dropdown-content bg-white rounded-box z-50 mt-3 w-52 p-2 shadow border border-violet-200"
+              className="menu menu-sm dropdown-content bg-white rounded-box mt-3 w-52 p-2 shadow border border-violet-200 z-[99999]"
             >
               <div className="pb-3 border-b border-violet-200">
                 <li className="text-sm font-bold text-violet-700">
@@ -154,9 +159,10 @@ const NavigationBar = () => {
                 </li>
                 <li className="text-xs text-violet-500">{user.email}</li>
               </div>
+
               <li>
                 <NavLink
-                  to={"/"}
+                  to="/"
                   className="text-violet-700 hover:text-violet-900"
                 >
                   <GoHomeFill /> Home
@@ -164,7 +170,7 @@ const NavigationBar = () => {
               </li>
               <li>
                 <NavLink
-                  to={"/all-book"}
+                  to="/all-books"
                   className="text-violet-700 hover:text-violet-900"
                 >
                   <IoLogoModelS /> All Books
@@ -172,7 +178,7 @@ const NavigationBar = () => {
               </li>
               <li>
                 <NavLink
-                  to={"/add-books"}
+                  to="/add-book"
                   className="text-violet-700 hover:text-violet-900"
                 >
                   <ImBoxAdd /> Add Book
@@ -180,31 +186,26 @@ const NavigationBar = () => {
               </li>
               <li>
                 <NavLink
-                  to={"/myBooks"}
+                  to="/myBooks"
                   className="text-violet-700 hover:text-violet-900"
                 >
                   <FaUser /> My Books
                 </NavLink>
               </li>
-              <li>
-                <Link
-                  to={"/myBooks"}
-                  className="text-violet-700 hover:text-violet-900"
-                >
-                  My Books
-                </Link>
-              </li>
+
               <input
                 onChange={(e) => handleTheme(e.target.checked)}
                 type="checkbox"
                 defaultChecked={localStorage.getItem("theme") === "dark"}
                 className="toggle"
               />
+
               <li>
                 <a className="text-violet-700 hover:text-violet-900">
-                  <FaGears></FaGears> Settings
+                  <FaGears /> Settings
                 </a>
               </li>
+
               <li>
                 <button
                   onClick={signOutUser}
@@ -217,7 +218,7 @@ const NavigationBar = () => {
           </div>
         ) : (
           <Link
-            to={"/auth/login"}
+            to="/auth/login"
             className="btn rounded-full border border-violet-300 btn-sm bg-violet-600 hover:bg-violet-700 text-white"
           >
             <IoLogIn /> Login
