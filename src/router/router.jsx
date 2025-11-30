@@ -10,6 +10,7 @@ import axios from "axios";
 import BookDetails from "../pages/BookDetails/BookDetails";
 import UpdateBook from "../pages/UpdateBook/UpdateBook";
 import MyBooks from "../pages/MyBooks/MyBooks";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -34,17 +35,29 @@ export const router = createBrowserRouter([
       },
       {
         path: "/add-book",
-        element: <AddBooks></AddBooks>,
+        element: (
+          <PrivateRoute>
+            <AddBooks></AddBooks>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/book-details/:id",
-        element: <BookDetails></BookDetails>,
+        element: (
+          <PrivateRoute>
+            <BookDetails></BookDetails>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:3000/books/${params.id}`),
       },
       {
         path: "/update-book/:id",
-        element: <UpdateBook></UpdateBook>,
+        element: (
+          <PrivateRoute>
+            <UpdateBook></UpdateBook>
+          </PrivateRoute>
+        ),
         loader: async ({ params }) => {
           const res = await fetch(`http://localhost:3000/books/${params.id}`);
           const data = await res.json();
@@ -53,7 +66,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/myBooks",
-        element: <MyBooks></MyBooks>,
+        element: (
+          <PrivateRoute>
+            <MyBooks></MyBooks>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/auth/login",
