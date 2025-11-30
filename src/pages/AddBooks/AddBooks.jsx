@@ -70,16 +70,29 @@ const AddBooks = () => {
 
           {/* Genre */}
           <div>
-            <label className="label font-semibold text-purple-700">Genre</label>
-            <input
-              type="text"
+            <label className="label font-medium">Genre</label>
+            <select
+              defaultValue={""}
               name="genre"
               required
-              className="input w-full rounded-xl border-purple-300 focus:ring-2 focus:ring-purple-500"
-              placeholder="Fantasy, Sci-Fi, etc."
-            />
+              className="select w-full rounded-full focus:border-0 focus:outline-gray-200"
+            >
+              <option value="" disabled>
+                Select genre
+              </option>
+              <option value="Vehicles">Fantasy</option>
+              <option value="Plants">Mystery</option>
+              <option value="Foods">Science Fiction</option>
+              <option value="Home & Living">Historical Fiction</option>
+              <option value="Characters">Educational</option>
+              <option value="Space">Programming</option>
+              <option value="Animals">Adventure</option>
+              <option value="Other">Crime</option>
+              <option value="Other">Self-Help</option>
+              <option value="Other">Travel</option>
+              <option value="Other">Non-Fiction</option>
+            </select>
           </div>
-
           {/* Rating */}
           <div>
             <label className="label font-semibold text-purple-700">
@@ -129,7 +142,7 @@ const AddBooks = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
             <div>
               <label className="label font-semibold text-purple-700">
-                Added By
+                User Name
               </label>
               <input
                 type="text"
