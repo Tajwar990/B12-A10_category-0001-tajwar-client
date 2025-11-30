@@ -55,7 +55,7 @@ const Banner = () => {
               <img
                 src={book.coverImage}
                 alt={book.title}
-                className="w-full h-96 md:h-96 lg:h-96 rounded-xl object-cover shadow-lg"
+                className="w-full lg:h-[1000px] md::h-[900px] h-[700px] rounded-xl object-cover shadow-lg"
               />
             </SwiperSlide>
           ))}
