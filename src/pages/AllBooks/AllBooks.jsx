@@ -6,14 +6,10 @@ const AllBooks = () => {
   const data = useLoaderData();
   const [books, setBooks] = useState(data);
 
-  const handleSort = (order) => {
-    if (order === "high") {
-      setBooks([...books].sort((a, b) => b.rating - a.rating));
-    } else if (order === "low") {
-      setBooks([...books].sort((a, b) => a.rating - b.rating));
-    } else {
-      setBooks(data);
-    }
+  const handleSort = async (order) => {
+    const res = await fetch(`http://localhost:3000/books?sort=${order}`);
+    const sortedData = await res.json();
+    setBooks(sortedData);
   };
 
   return (
