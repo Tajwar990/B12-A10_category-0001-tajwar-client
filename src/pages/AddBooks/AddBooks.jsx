@@ -2,6 +2,8 @@ import toast from "react-hot-toast";
 import { AuthContext } from "../../context/AuthCOntext";
 import { use } from "react";
 import axios from "axios";
+import { Tooltip } from "react-tooltip";
+import "react-tooltip/dist/react-tooltip.css";
 
 const AddBooks = () => {
   const { user } = use(AuthContext);
@@ -30,6 +32,7 @@ const AddBooks = () => {
         toast.error("Failed to add book!");
       });
   };
+
   return (
     <div className="w-full px-4 sm:px-6 lg:px-0 flex justify-center">
       <div
@@ -49,9 +52,12 @@ const AddBooks = () => {
               type="text"
               name="title"
               required
+              data-tooltip-id="titleTip"
+              data-tooltip-content="Enter the name of the book"
               className="input w-full rounded-xl border-purple-300 focus:ring-2 focus:ring-purple-500"
               placeholder="Enter book title"
             />
+            <Tooltip id="titleTip" place="right" />
           </div>
 
           {/* Author */}
@@ -63,9 +69,12 @@ const AddBooks = () => {
               type="text"
               name="author"
               required
+              data-tooltip-id="authorTip"
+              data-tooltip-content="Who wrote the book?"
               className="input w-full rounded-xl border-purple-300 focus:ring-2 focus:ring-purple-500"
               placeholder="Author name"
             />
+            <Tooltip id="authorTip" place="right" />
           </div>
 
           {/* Genre */}
@@ -80,19 +89,20 @@ const AddBooks = () => {
               <option value="" disabled>
                 Select genre
               </option>
-              <option value="Vehicles">Fantasy</option>
-              <option value="Plants">Mystery</option>
-              <option value="Foods">Science Fiction</option>
-              <option value="Home & Living">Historical Fiction</option>
-              <option value="Characters">Educational</option>
-              <option value="Space">Programming</option>
-              <option value="Animals">Adventure</option>
-              <option value="Other">Crime</option>
-              <option value="Other">Self-Help</option>
-              <option value="Other">Travel</option>
-              <option value="Other">Non-Fiction</option>
+              <option value="Fantasy">Fantasy</option>
+              <option value="Mystery">Mystery</option>
+              <option value="Science Fiction">Science Fiction</option>
+              <option value="Historical Fiction">Historical Fiction</option>
+              <option value="Educational">Educational</option>
+              <option value="Programming">Programming</option>
+              <option value="Adventure">Adventure</option>
+              <option value="Crime">Crime</option>
+              <option value="Self-Help">Self-Help</option>
+              <option value="Travel">Travel</option>
+              <option value="Non-Fiction">Non-Fiction</option>
             </select>
           </div>
+
           {/* Rating */}
           <div>
             <label className="label font-semibold text-purple-700">
@@ -105,9 +115,12 @@ const AddBooks = () => {
               min="1"
               name="rating"
               required
+              data-tooltip-id="ratingTip"
+              data-tooltip-content="Enter a rating between 1 and 5"
               className="input w-full rounded-xl border-purple-300 focus:ring-2 focus:ring-purple-500"
               placeholder="4.7"
             />
+            <Tooltip id="ratingTip" place="right" />
           </div>
 
           {/* Summary */}
@@ -119,9 +132,12 @@ const AddBooks = () => {
               name="summary"
               required
               rows="4"
+              data-tooltip-id="summaryTip"
+              data-tooltip-content="Write a short overview of the story"
               className="textarea w-full rounded-xl border-purple-300 focus:ring-2 focus:ring-purple-500"
               placeholder="Brief summary of the book..."
             ></textarea>
+            <Tooltip id="summaryTip" place="right" />
           </div>
 
           {/* Cover Image */}
@@ -133,39 +149,15 @@ const AddBooks = () => {
               type="url"
               name="coverImage"
               required
+              data-tooltip-id="imageTip"
+              data-tooltip-content="Paste a direct image URL"
               className="input w-full rounded-xl border-purple-300 focus:ring-2 focus:ring-purple-500"
               placeholder="https://example.com/book.jpg"
             />
+            <Tooltip id="imageTip" place="right" />
           </div>
 
-          {/* User Info (Auto-filled) */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
-            <div>
-              <label className="label font-semibold text-purple-700">
-                User Name
-              </label>
-              <input
-                type="text"
-                readOnly
-                value={user?.displayName || "Anonymous"}
-                className="input w-full rounded-xl bg-purple-100 border-purple-300"
-              />
-            </div>
-
-            <div>
-              <label className="label font-semibold text-purple-700">
-                User Email
-              </label>
-              <input
-                type="email"
-                readOnly
-                value={user?.email || "unknown"}
-                className="input w-full rounded-xl bg-purple-100 border-purple-300"
-              />
-            </div>
-          </div>
-
-          {/* Submit Button */}
+          {/* Submit */}
           <button
             type="submit"
             className="btn w-full text-white mt-6 rounded-full

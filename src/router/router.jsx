@@ -19,6 +19,10 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+        loader: async () => {
+          const res = await axios.get("http://localhost:3000/latest-books");
+          return res.data;
+        },
       },
       {
         path: "/all-books",
