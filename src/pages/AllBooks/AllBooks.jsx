@@ -7,7 +7,9 @@ const AllBooks = () => {
   const [books, setBooks] = useState(data);
 
   const handleSort = async (order) => {
-    const res = await fetch(`http://localhost:3000/books?sort=${order}`);
+    const res = await fetch(
+      `https://b12-a10-category-0001-tajwar-server.vercel.app/books?sort=${order}`
+    );
     const sortedData = await res.json();
     setBooks(sortedData);
   };

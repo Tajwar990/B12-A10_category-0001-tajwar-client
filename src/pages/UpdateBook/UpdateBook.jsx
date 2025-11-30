@@ -16,7 +16,10 @@ const UpdateBook = () => {
     };
 
     axios
-      .put(`http://localhost:3000/books/${book._id}`, formData)
+      .put(
+        `https://b12-a10-category-0001-tajwar-server.vercel.app/books/${book._id}`,
+        formData
+      )
       .then((res) => {
         toast.success("Book Updated Successfully!");
         console.log(res.data);

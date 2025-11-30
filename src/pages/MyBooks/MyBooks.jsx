@@ -13,7 +13,9 @@ const MyBooks = () => {
     if (!user?.email) return;
 
     axios
-      .get(`http://localhost:3000/myBooks?email=${user.email}`)
+      .get(
+        `https://b12-a10-category-0001-tajwar-server.vercel.app/myBooks?email=${user.email}`
+      )
       .then((res) => {
         setBooks(res.data);
         setLoading(false);
@@ -33,7 +35,9 @@ const MyBooks = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:3000/books/${id}`)
+          .delete(
+            `https://b12-a10-category-0001-tajwar-server.vercel.app/books/${id}`
+          )
           .then(() => {
             setBooks(books.filter((book) => book._id !== id));
             Swal.fire("Deleted!", "Your book has been deleted.", "success");

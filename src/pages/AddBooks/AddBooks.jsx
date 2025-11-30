@@ -22,7 +22,10 @@ const AddBooks = () => {
       userName: user?.displayName || "Anonymous",
     };
     axios
-      .post("http://localhost:3000/books", formData)
+      .post(
+        "https://b12-a10-category-0001-tajwar-server.vercel.app/books",
+        formData
+      )
       .then((res) => {
         toast.success("Book Added Successfully!");
         console.log(res.data);

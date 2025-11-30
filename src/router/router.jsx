@@ -21,7 +21,9 @@ export const router = createBrowserRouter([
         path: "/",
         element: <Home></Home>,
         loader: async () => {
-          const res = await axios.get("http://localhost:3000/latest-books");
+          const res = await axios.get(
+            "https://b12-a10-category-0001-tajwar-server.vercel.app/latest-books"
+          );
           return res.data;
         },
       },
@@ -29,7 +31,9 @@ export const router = createBrowserRouter([
         path: "/all-books",
         element: <AllBooks></AllBooks>,
         loader: async () => {
-          const res = await axios.get("http://localhost:3000/books");
+          const res = await axios.get(
+            "https://b12-a10-category-0001-tajwar-server.vercel.app/books"
+          );
           return res.data;
         },
       },
@@ -49,7 +53,9 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/books/${params.id}`),
+          fetch(
+            `https://b12-a10-category-0001-tajwar-server.vercel.app/books/${params.id}`
+          ),
       },
       {
         path: "/update-book/:id",
@@ -59,7 +65,9 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: async ({ params }) => {
-          const res = await fetch(`http://localhost:3000/books/${params.id}`);
+          const res = await fetch(
+            `https://b12-a10-category-0001-tajwar-server.vercel.app/books/${params.id}`
+          );
           const data = await res.json();
           return data.result;
         },

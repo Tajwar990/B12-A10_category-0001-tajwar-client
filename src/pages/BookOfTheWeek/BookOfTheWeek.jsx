@@ -6,7 +6,7 @@ const BookOfTheWeek = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/books")
+      .get("https://b12-a10-category-0001-tajwar-server.vercel.app/books")
       .then((res) => {
         if (res.data.length > 0) setBook(res.data[0]);
       })
