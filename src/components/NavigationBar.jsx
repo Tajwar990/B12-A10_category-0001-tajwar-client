@@ -164,7 +164,7 @@ const NavigationBar = () => {
               </li>
               <li>
                 <NavLink
-                  to={"/all-books"}
+                  to={"/all-book"}
                   className="text-violet-700 hover:text-violet-900"
                 >
                   <IoLogoModelS /> All Books
@@ -172,7 +172,7 @@ const NavigationBar = () => {
               </li>
               <li>
                 <NavLink
-                  to={"/add-book"}
+                  to={"/add-books"}
                   className="text-violet-700 hover:text-violet-900"
                 >
                   <ImBoxAdd /> Add Book
