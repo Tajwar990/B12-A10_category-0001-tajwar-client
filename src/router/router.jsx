@@ -9,6 +9,7 @@ import AddBooks from "../pages/AddBooks/AddBooks";
 import axios from "axios";
 import BookDetails from "../pages/BookDetails/BookDetails";
 import UpdateBook from "../pages/UpdateBook/UpdateBook";
+import MyBooks from "../pages/MyBooks/MyBooks";
 
 export const router = createBrowserRouter([
   {
@@ -40,8 +41,15 @@ export const router = createBrowserRouter([
       {
         path: "/update-book/:id",
         element: <UpdateBook></UpdateBook>,
-        loader: ({ params }) =>
-          fetch(`http://localhost:3000/books/${params.id}`),
+        loader: async ({ params }) => {
+          const res = await fetch(`http://localhost:3000/books/${params.id}`);
+          const data = await res.json();
+          return data.result;
+        },
+      },
+      {
+        path: "/myBooks",
+        element: <MyBooks></MyBooks>,
       },
       {
         path: "/auth/login",

@@ -77,7 +77,7 @@ const NavigationBar = () => {
             </li>
             <li>
               <NavLink
-                to={"/my-books"}
+                to={"/myBooks"}
                 className="text-violet-700 hover:text-violet-900"
               >
                 <FaUser /> My Books
@@ -117,7 +117,7 @@ const NavigationBar = () => {
           </li>
           <li>
             <NavLink
-              to={"/my-books"}
+              to={"/myBooks"}
               className="text-violet-700 hover:text-violet-900"
             >
               <FaUser /> My Books
@@ -180,7 +180,7 @@ const NavigationBar = () => {
               </li>
               <li>
                 <NavLink
-                  to={"/my-books"}
+                  to={"/myBooks"}
                   className="text-violet-700 hover:text-violet-900"
                 >
                   <FaUser /> My Books
@@ -188,7 +188,7 @@ const NavigationBar = () => {
               </li>
               <li>
                 <Link
-                  to={"/my-books"}
+                  to={"/myBooks"}
                   className="text-violet-700 hover:text-violet-900"
                 >
                   My Books
